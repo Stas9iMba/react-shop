@@ -1,6 +1,180 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
 body {
   margin: 0;
-  font-family: system-ui;
+  font-family: 'Inter', system-ui;
   background-color: #E7F6FF;
 }
 
+.wrapper {
+  background: #FFFFFF;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 20px;
+  max-width: 1080px;
+  margin: 50px auto;
+}
+
+.container {
+  max-width: 997px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 43px 0;
+  border-bottom: 1px solid #EAEAEA;
+  margin-bottom: 40px;
+
+  .headerLeft {
+    display: flex;
+    align-items: center;
+
+    img {
+      margin-right: 15px;
+    }
+  }
+
+  .headerInfo {
+    h3 {
+      text-transform: uppercase;
+    }
+    p{
+      opacity: 0.5;
+    }
+  }
+
+  .headerRight {
+    display: flex;
+    list-style: none;
+
+    li {
+      display: flex;
+      align-items: center;
+
+      img {
+        display: block;
+      }
+    }
+
+    li:not(:last-child) {
+      padding-right: 30px;
+
+      img {
+        margin-right: 15px;
+      }
+    }
+  }
+}
+
+.content {
+  padding-bottom: 40px;
+
+  h1 {
+    margin-bottom: 40px;
+  }
+
+  &__inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+  }
+}
+
+.card {
+  width: 210px;
+  padding: 20px;
+  background: #FFFFFF;
+  border: 1px solid #F3F3F3;
+  border-radius: 40px;
+
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+
+  &__name {
+    margin: 14px 0;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 400;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__info-price {
+    display: flex;
+    flex-direction: column;
+
+    span {
+      font-weight: 500;
+      font-size: 11px;
+      line-height: 13px;
+      opacity: .5;
+      text-transform: uppercase;
+    }
+  }
+
+  &__btn {
+    width: 32px;
+    height: 32px;
+    background: #FFFFFF;
+    border: 1px solid #F2F2F2;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+}
