@@ -102,6 +102,7 @@ body {
     display: flex;
     align-items: center;
     cursor: pointer;
+
     img {
       display: block;
     }
@@ -119,8 +120,30 @@ body {
 .content {
   padding-bottom: 40px;
 
-  &__title {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 40px;
+  }
+
+  &__form-input {
+    width: 250px;
+    height: 45px;
+    border: 1px solid #F3F3F3;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 13px 13px 13px 46px;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      height: 16px;
+      width: 16px;
+      left: 0;
+      top: 0;
+      background-image: url('./images/icons/search.svg');
+    }
   }
 
   &__inner {
@@ -136,6 +159,10 @@ body {
   background: #FFFFFF;
   border: 1px solid #F3F3F3;
   border-radius: 40px;
+
+  &:hover {
+    box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.05);
+  }
 
   img {
     display: block;
@@ -175,5 +202,30 @@ body {
     border: 1px solid #F2F2F2;
     border-radius: 8px;
     cursor: pointer;
+  }
+
+  &__btn--heard {
+    position: absolute;
+    transition: all .3s linear;
+
+    &:hover {
+      background-color: #FEF0F0;
+      border-color: #FF8585;
+      transition: all .3s linear;
+    }
+
+    svg {
+      display: block;
+      text-align: center;
+      margin: 0 auto;
+      transition: all 3.3s linear;
+
+      &:hover {
+        path {
+          transition: all .3s linear;
+          fill: #FF8585;
+        }
+      }
+    }
   }
 }
