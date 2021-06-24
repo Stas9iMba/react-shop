@@ -2,20 +2,20 @@ function App() {
   return (
     <div className="wrapper">
       <div className="container">
-        <header>
-          <div className="headerLeft">
+        <header className='header'>
+          <div className="header__logo">
             <img width={40} height={40} src="/images/icons/logo.png" alt="" />
-            <div className="headerInfo">
-              <h3>REACT Shop</h3>
-              <p>Магазин лучших кроссовок</p>
+            <div>
+              <h3 className="header__title">REACT Shop</h3>
+              <p  className="header__subtitle">Магазин лучших кроссовок</p>
             </div>
           </div>
-          <ul className="headerRight">
-            <li>
+          <ul className="header__list">
+            <li className="header__item">
               <img width={18} height={18} src="/images/icons/cart.svg" alt="" />
               <span>1205 руб.</span>
             </li>
-            <li>
+            <li className="header__item">
               <svg
                 width="22"
                 height="19"
@@ -28,13 +28,14 @@ function App() {
                 />
               </svg>
             </li>
-            <li>
+            <li className="header__item">
               <img width={20} height={20} src="/images/icons/user.svg" alt="" />
             </li>
           </ul>
         </header>
+        
         <div className="content">
-          <h1>Все кросcовки</h1>
+          <h1 className="content__title">Все кросcовки</h1>
           <div className="content__inner">
             <div className="card">
               <img width={133} height={112} src="/images/product/product-1.jpg" alt="" />

@@ -69,14 +69,14 @@ body {
   padding: 0 15px;
 }
 
-header {
+.header {
   display: flex;
   justify-content: space-between;
   padding: 43px 0;
   border-bottom: 1px solid #EAEAEA;
   margin-bottom: 40px;
 
-  .headerLeft {
+  &__logo {
     display: flex;
     align-items: center;
 
@@ -85,34 +85,33 @@ header {
     }
   }
 
-  .headerInfo {
-    h3 {
-      text-transform: uppercase;
-    }
-    p{
-      opacity: 0.5;
+  &__title {
+    text-transform: uppercase;
+  }
+
+  &__subtitle {
+    opacity: 0.5;
+  }
+
+  &__list {
+    display: flex;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    img {
+      display: block;
     }
   }
 
-  .headerRight {
-    display: flex;
-    list-style: none;
+  &__item:not(:last-child) {
+    padding-right: 30px;
 
-    li {
-      display: flex;
-      align-items: center;
-
-      img {
-        display: block;
-      }
-    }
-
-    li:not(:last-child) {
-      padding-right: 30px;
-
-      img {
-        margin-right: 15px;
-      }
+    img {
+      margin-right: 15px;
     }
   }
 }
@@ -120,7 +119,7 @@ header {
 .content {
   padding-bottom: 40px;
 
-  h1 {
+  &__title {
     margin-bottom: 40px;
   }
 
