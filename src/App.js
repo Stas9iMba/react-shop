@@ -1,6 +1,7 @@
 import logo from './images/icons/logo.png';
 import cart from './images/icons/cart.svg';
 import user from './images/icons/user.svg';
+import search from './images/icons/search.svg';
 import btn_add from './images/icons/button-add.svg';
 import product_1 from './images/product/product-1.jpg';
 import product_2 from './images/product/product-2.jpg';
@@ -46,8 +47,9 @@ function App() {
         <div className="content">
           <div className="content__top">
             <h1 className="content__title">Все кросcовки</h1>
-            <form action="" className="content__form">
-              <input className="content__form-input" type="text" placeholder="Поиск..." />
+            <form className="content__form" action="#" >
+              <img width={20} height={20} src={search} alt="search" />
+              <input type="text" placeholder="Поиск..." />
             </form>
           </div>
           <div className="content__inner">
@@ -73,7 +75,7 @@ function App() {
                   <b>12 999 руб.</b>
                 </div>
                 <button className="card__btn">
-                  <img width={11} height={11} src={btn_add} alt="" />
+                  <img width={32} height={32} src={btn_add} alt="" />
                 </button>
               </div>
             </div>
