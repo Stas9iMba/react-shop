@@ -82,18 +82,22 @@ body {
   border: none;
   cursor: pointer;
   transition: background-color 0.2s;
-  img{
+
+  img {
     position: absolute;
     right: 34px;
     top: 17px;
-    transition:  transform .3s;
+    transition: transform .3s;
   }
+
   &:hover {
     background-color: lighten(mediumseagreen, 5%);
-    img{
+
+    img {
       transform: translateX(10px);
     }
   }
+
   &:active {
     background-color: darken(mediumseagreen, 10%);
   }
@@ -281,11 +285,12 @@ body {
     z-index: 10;
   }
 
-  &__top{
+  &__top {
     display: flex;
     justify-content: space-between;
     margin-bottom: 30px;
   }
+
   &__title {
     font-size: 24px;
   }
