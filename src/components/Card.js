@@ -3,7 +3,7 @@ import btnAdd from '../images/icons/button-add.svg';
 import btnHeart from '../images/icons/button-heart.svg';
 import product_1 from '../images/product/product-1.jpg';
 
-function Card() {
+function Card(props) {
   return (
     <div className="card">
       <div className="card__heart card__heart--active">
