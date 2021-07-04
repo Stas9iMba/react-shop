@@ -402,11 +402,32 @@ body {
 .widget-main {
   flex: 1;
   overflow: auto;
-  padding: 20px 10px;
+  padding: 20px 10px 20px 10px;
+  position: relative;
+
+  &__date {
+    display: block;
+    margin: 0 auto;
+    width: 70px;
+
+    span {
+      padding: 5px 15px;
+      background-color: #4d51a1;
+      color: #f0f0f6;
+      font-size: 14px;
+      border-radius: 50px;
+      opacity: 0.8;
+      position: fixed;
+      transition: opacity .3s linear;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
 
   &__inner {}
 
-  &__item {}
 
   &__left,
   &__right {
@@ -521,6 +542,7 @@ body {
     transform: translateY(-50%);
     object-fit: cover;
     margin: 0 2px;
+
     &:hover {
 
       path {
@@ -548,6 +570,7 @@ body {
     background-color: inherit;
     cursor: pointer;
     border: none;
+
     path {
       transition: fill 0.3s linear;
     }
