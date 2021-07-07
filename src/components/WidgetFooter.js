@@ -1,8 +1,14 @@
 import React from 'react';
 
+
 function WidgetFooter() {
   return (
     <div className="widget-footer">
+      <div className="widget-footer-slider">
+        <button className="widget-footer-slider__item">Book an appointment</button>
+        {/* <button className="widget-footer-slider__item">View hairstylists</button> */}
+        <button className="widget-footer-slider__item">View gallery</button>
+      </div>
       <form className="widget-footer__form" action="#">
         <button className="widget-footer__btn btn__paperclip">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" widget="20px" height="20px">
@@ -19,7 +25,9 @@ function WidgetFooter() {
             />
           </svg>
         </button>
-        <input className="widget-footer__input" placeholder="Введите сообщение..."></input>
+        <textarea
+          className="widget-footer__textarea"
+          placeholder="Введите сообщение..." ></textarea>
         <button className="widget-footer__btn btn__submit">
           <svg xmlns="http://www.w3.org/2000/svg" widget="20px" height="20px" viewBox="0 0 32 32">
             <path

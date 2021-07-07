@@ -361,14 +361,20 @@ body {
 
 /////////////////////////
 
+$title: #7f8091;
+$primary: #4d51a1;
+$bg: #f0f0f6;
+$chatR: #c5c5e0;
+$chatL: #56576f;
+
 .widget {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   max-width: 400px;
   width: 100%;
-  height: 600px;
-  color: #7f8091;
+  height: 800px;
+  color: $bg;
   background-color: #ffffff;
   border-radius: 15px;
   position: fixed;
@@ -382,6 +388,7 @@ body {
   padding: 20px 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   border-radius: 15px 15px 0 0;
+  background-color: darken($primary, 15%);
 
   &__title {
     h1 {
@@ -409,16 +416,16 @@ body {
     display: block;
     margin: 0 auto;
     width: 70px;
-
     span {
       padding: 5px 15px;
-      background-color: #4d51a1;
-      color: #f0f0f6;
+      background-color: $primary;
+      color: $bg;
       font-size: 14px;
       border-radius: 50px;
       opacity: 0.8;
       position: fixed;
-      transition: opacity .3s linear;
+      transition: opacity 0.3s linear;
+      z-index: 10;
 
       &:hover {
         opacity: 1;
@@ -426,16 +433,17 @@ body {
     }
   }
 
-  &__inner {}
-
+  &__inner {
+    overflow: auto;
+  }
 
   &__left,
   &__right {
     padding: 10px;
-    max-width: 280px;
-    width: 100%;
-    background-color: #f0f0f6;
-    color: #56576f;
+    min-width: 110px;
+    max-width: 75%;
+    background-color: $bg;
+    color: $chatL;
     margin-bottom: 20px;
     clear: both;
 
@@ -452,49 +460,77 @@ body {
   &__left {
     border-radius: 0 10px 10px 10px;
     float: left;
-
   }
 
   &__right {
-    background-color: #4d51a1;
+    background-color: $primary;
     float: right;
-
     margin-left: auto;
     border-radius: 10px 10px 0 10px;
-    color: #c5c5e0;
+    color: $chatR;
   }
 
   &::-webkit-scrollbar {
-    display: none;
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+    background-color: inherit;
+    border-radius: 15px;
+    overflow: auto;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 15px;
+    background-color: $primary;
   }
 }
 
 .widget-footer {
   padding: 10px;
   border-radius: 0 0 15px 15px;
-  position: relative;
   box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.2);
 
   &__form {
     display: flex;
     justify-content: space-between;
+    height: 50px;
+    position: relative;
   }
 
-  &__input {
+  &__textarea {
     width: 100%;
     border: none;
-    height: 50px;
     font-size: 20px;
-    padding: 7px 77px 7px 17px;
+    padding: 10px 70px 7px 10px;
     outline: none;
-    color: #56576f;
+    color: $chatL;
     margin-right: 10px;
     border: 1px solid #d0d0d0;
-    border-radius: 50px;
+    border-radius: 10px;
+    resize: none;
 
     &::placeholder {
-      color: #c5c5e0;
+      color: $chatR;
     }
+  }
+
+  &__textarea::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &__textarea::-webkit-scrollbar-track {
+    -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+    background-color: inherit;
+    border-radius: 15px;
+    overflow: auto;
+    margin: 3px 0;
+  }
+
+  &__textarea::-webkit-scrollbar-thumb {
+    border-radius: 15px;
+    background-color: $primary;
   }
 
   &__btn {
@@ -509,7 +545,7 @@ body {
 
 .btn {
   &__submit {
-    background-color: #4d51a1;
+    background-color: $primary;
     border-radius: 50%;
     border: none;
     cursor: pointer;
@@ -519,20 +555,20 @@ body {
     transition: background-color 0.2s linear;
 
     &:hover {
-      background-color: darken(#4d51a1, 15%);
+      background-color: darken($primary, 15%);
     }
 
     &:active {
-      background-color: lighten(#4d51a1, 5%);
+      background-color: lighten($primary, 5%);
     }
   }
 
   &__paperclip {
-    right: 80px;
+    right: 65px;
   }
 
   &__smile {
-    right: 110px;
+    right: 95px;
   }
 
   &__paperclip,
@@ -544,9 +580,8 @@ body {
     margin: 0 2px;
 
     &:hover {
-
       path {
-        fill: #56576f;
+        fill: $chatL;
       }
     }
 
@@ -559,7 +594,7 @@ body {
   &__close {
     &:hover {
       path {
-        fill: #4d51a1;
+        fill: darken($chatR, 5%);
       }
     }
   }
@@ -575,20 +610,110 @@ body {
       transition: fill 0.3s linear;
     }
   }
-
-
 }
-
 
 .time {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 13px;
-
   span {
     display: flex;
     align-items: center;
     font-size: 13px;
   }
 }
+
+.widget-main-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  height: auto;
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin-bottom: 20px;
+  width: 100%;
+
+  &__item {
+    padding: 15px 10px;
+    margin-bottom: 10px;
+    width: 75%;
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: inherit;
+    color: $chatL;
+    border-radius: 0 10px 10px 10px;
+    border: none;
+    cursor: pointer;
+    background-color: $bg;
+    word-break: break-word;
+    outline: none;
+    transition: background-color 0.3s linear, color 0.3s linear;
+
+    &:hover {
+      background-color: $primary;
+      color: $chatR;
+    }
+
+    &:active {
+      background-color: darken($primary, 20%);
+      color: $bg;
+    }
+  }
+  &__link{
+    text-align: center;
+    position: relative;
+    &::after{
+      content: '';
+      position: absolute;
+      object-fit: cover;
+      overflow: hidden;
+      width: 17px;
+      height: 17px;
+      right: 6px;
+      top: 3px;
+      background-image: url(./images/widget/share.svg);
+    }
+
+    &:hover {
+      &::after{
+        background-image: url(./images/widget/shareWhite.svg);
+      }
+    }
+  }
+}
+
+.widget-footer-slider {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 0 15px;
+  &__item {
+    padding: 5px 15px;
+    margin: 0 5px;
+    width: auto;
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: inherit;
+    color: $chatL;
+    border-radius: 10px;
+    border: 1px solid $bg;
+    cursor: pointer;
+    background-color: $bg;
+    word-break: break-word;
+    outline: none;
+    transition: border 0.3s linear, color 0.3s linear, background-color 0.3s linear;
+
+    &:hover {
+    border: 1px solid darken($primary, 20%);
+    background-color: lighten($primary, 15%);
+    color: $bg;
+    }
+
+    &:active {
+    border: 1px solid darken($primary, 40%);
+    background-color: darken($primary, 10%);
+    }
+  }
+}
+

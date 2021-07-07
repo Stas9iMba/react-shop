@@ -1,6 +1,6 @@
 import React from 'react';
-import check from '../images/widget/check.svg';
-import checkDouble from '../images/widget/checkDouble.svg';
+import WidgetMainChatLeft from '../components/WidgetMainChatLeft';
+import WidgetMainChatRight from '../components/WidgetMainChatRight';
 
 function WidgetMain() {
   return (
@@ -9,27 +9,20 @@ function WidgetMain() {
         <span>July 2</span>
       </div>
       <div className="widget-main__inner">
-        <div className="widget-main__left">
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus et dicta sint
-            tempore sit nemo quas neque maiores animi. Voluptate?
-          </p>
-          <div className="time">
-            <span>12.43</span>
-            <span>
-              <img src={check} alt="check" height={12} width={12} />
-            </span>
-          </div>
+        <WidgetMainChatLeft />
+        <div className="widget-main-suggestions">
+          <button className="widget-main-suggestions__item">Book an appointment</button>
+          <button className="widget-main-suggestions__item">View hairstylists</button>
+          <button className="widget-main-suggestions__item">View gallery</button>
+          <a className="widget-main-suggestions__item widget-main-suggestions__link" href="#">View gallery</a>
         </div>
-        <div className="widget-main__right">
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing</p>
-          <div className="time">
-            12.45
-            <span>
-              <img src={checkDouble} alt="check" height={15} width={15} />
-            </span>
-          </div>
-        </div>
+        <WidgetMainChatRight />
+        <WidgetMainChatRight />
+        <WidgetMainChatLeft />
+        <WidgetMainChatRight />
+        <WidgetMainChatLeft />
+        <WidgetMainChatRight />
+        <WidgetMainChatLeft />
       </div>
     </div>
   );

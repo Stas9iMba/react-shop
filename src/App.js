@@ -6,9 +6,9 @@ import Widget from './components/Widget';
 
 function App() {
   return (
-    <div className="wrapper">
+    <div className="wrapper" >
       <SideBasket />
-      <div className="container" style={{ display: 'none' }}>
+      <div className="container" style={{ display: 'none' }} >
         <Header />
         <div className="content">
           <div className="content__top">
@@ -18,7 +18,7 @@ function App() {
               <input type="text" placeholder="Поиск..." />
             </form>
           </div>
-          <div className="content__inner">
+          <div className="content__inner" >
             <Card />
             <Card />
             <Card />
