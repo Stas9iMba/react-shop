@@ -684,14 +684,50 @@ $chatL: #56576f;
 }
 
 .widget-footer-slider {
-  display: flex;
-  justify-content: space-between;
   margin-bottom: 10px;
-  padding: 0 15px;
+  padding: 0 42px;
+  .slick-list{
+    align-items: center;
+  }
+  .slick-next,
+  .slick-prev {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    width: 40px;
+    height: 40px;
+    background-color: $primary !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s linear;
+
+    &:hover {
+      background-color: darken($primary, 15%);
+    }
+
+    &:active {
+      background-color: lighten($primary, 5%);
+    }
+  }
+
+  .slick-next {
+    margin-right: -16px;
+
+  }
+
+  .slick-prev {
+    margin-left: -16px;
+  }
+
   &__item {
     padding: 5px 15px;
-    margin: 0 5px;
-    width: auto;
+    height: 50px;
+    width: 140px;
     font-size: inherit;
     line-height: inherit;
     font-weight: inherit;
