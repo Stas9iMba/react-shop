@@ -6,7 +6,7 @@ import WidgetHeader from '../components/WidgetHeader';
 
 function Widget() {
   return (
-    <section className="widget">
+    <section className="widget" style={{ display: 'none' }}>
       <WidgetHeader />
       <WidgetMain />
       <WidgetFooter />
