@@ -19,9 +19,9 @@ function App() {
   return (
     <div className="wrapper">
       <SideBasket />
-      <div className="container">
+      <div className="container" >
         <Header />
-        <div className="content">
+        <div className="content" >
           <div className="content__top">
             <h1 className="content__title">Все кросcовки</h1>
             <form className="content__form" action="#">
@@ -31,7 +31,17 @@ function App() {
           </div>
           <div className="content__inner">
             {arr.map((obj) => (
-              <Card title={obj.title} price={obj.price} imgUrl={obj.imgUrl} />
+              <Card
+                title={obj.title}
+                price={obj.price}
+                imgUrl={obj.imgUrl}
+                onClickFavorite={() => {
+                  console.log('Добавили в избранное');
+                }}
+                onClickAdd={() => {
+                  console.log('Добавили в корзину');
+                }}
+              />
             ))}
           </div>
         </div>

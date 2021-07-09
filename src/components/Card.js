@@ -1,15 +1,17 @@
 import React from 'react';
 import btnAdd from '../images/icons/button-add.svg';
+import btnAddActive from '../images/icons/button-add--active.svg';
 import btnHeart from '../images/icons/button-heart.svg';
 
 function Card(props) {
-  const onClickButton = () => {
-    console.log('click');
-  };
+  const [isAdded, setIsAdded] = React.useState(false);
 
+  const handleOnClick = () => {
+    setIsAdded(true);
+  };
   return (
     <div className="card">
-      <div className="card__heart card__heart--active">
+      <div className="card__heart card__heart--active" onClick={props.onClickFavorite}>
         <img width={32} height={32} src={btnHeart} alt="Button heart" />
       </div>
       <img width={133} height={112} src={props.imgUrl} alt="" />
@@ -19,9 +21,15 @@ function Card(props) {
           <p>Цена:</p>
           <span>{props.price}</span>
         </div>
-        <button className="card__btn" onClick={onClickButton}>
-          <img width={32} height={32} src={btnAdd} alt="" />
-        </button>
+        <div className="card__btn" onClick={props.onClickAdd}> 
+          <img
+            onClick={handleOnClick}
+            width={32}
+            height={32}
+            src={isAdded ? btnAddActive : btnAdd}
+            alt="Button add"
+          />
+        </div>
       </div>
     </div>
   );
