@@ -3,18 +3,30 @@ import btnRemove from '../images/icons/button-remove.svg';
 import arrowRight from '../images/icons/arrow-right.svg';
 import SideBasketItem from './SideBasketItem';
 
-function SideBasket() {
+function SideBasket({ onClose, items = [] }) {
   return (
-    <section className="side-basket" style={{ display: 'none' }}>
+    <section className="side-basket">
       <div className="side-basket__box">
         <div className="side-basket__top">
           <h2 className="side-basket__title">Корзина</h2>
-          <img className="card__btn-img" width={32} height={32} src={btnRemove} alt="" />
+          <img
+            className="card__btn-img"
+            width={32}
+            height={32}
+            src={btnRemove}
+            alt="Close"
+            onClick={onClose}
+          />
         </div>
         <div className="side-basket__items">
-          <SideBasketItem />
-          <SideBasketItem />
-          <SideBasketItem />
+          {items.map((obj) => (
+            <SideBasketItem 
+            title={obj.title} 
+            price={obj.price} 
+            imgUrl={obj.imgUrl} 
+            />
+            
+            ))}
         </div>
         <ul className="side-basket__list list-info">
           <li>

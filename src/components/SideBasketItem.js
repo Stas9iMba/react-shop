@@ -1,19 +1,29 @@
 import React from 'react';
-import product_1 from '../images/product/product-1.jpg';
 import btnRemove from '../images/icons/button-remove.svg';
 
-function SideBasketItem() {
+function SideBasketItem({ title, price, imgUrl }) {
+  const [cart, setCartRemove] = React.useState('flex');
+  const onRemove = () => {
+    setCartRemove('none');
+  };
   return (
-    <div className="side-basket__item">
-      <img width={70} height={60} src={product_1} alt="" />
+    <div className="side-basket__item" style={{ display: cart  }}>
+      <img width={70} height={60} src={imgUrl} alt="" />
       <div className="card__info">
-        <h5 className="card__name">Мужские Кроссовки Nike Blazer Mid Suede</h5>
+        <h5 className="card__name">{title}</h5>
         <div className="card__info-price">
-          <span>12 999 руб.</span>
+          <span>{price}</span>
         </div>
       </div>
       <button className="card__btn">
-        <img className="card__btn-img" width={32} height={32} src={btnRemove} alt="" />
+        <img
+          className="card__btn-img"
+          width={32}
+          height={32}
+          src={btnRemove}
+          alt="remove"
+          onClick={onRemove}
+        />
       </button>
     </div>
   );

@@ -3,7 +3,7 @@ import logo from '../images/icons/logo.png';
 import cart from '../images/icons/cart.svg';
 import user from '../images/icons/user.svg';
 
-function Header() {
+function Header({onClickCart}) {
   return (
     <header className="header">
       <div className="header__logo">
@@ -14,7 +14,7 @@ function Header() {
         </div>
       </div>
       <ul className="header__list">
-        <li className="header__item">
+        <li className="header__item"  onClick={onClickCart}>
           <img width={18} height={18} src={cart} alt="" />
           <span>12 999 руб.</span>
         </li>

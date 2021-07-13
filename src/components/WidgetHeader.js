@@ -1,13 +1,13 @@
 import React from 'react';
 
-function WidgetHeader() {
+function WidgetHeader(props) {
   return (
     <div className="widget-header">
       <div className="widget-header__title">
         <h1>Тестовый виджет W11</h1>
         <p>Итерация №1</p>
       </div>
-      <button className="widget-header__btn btn__close">
+      <button className="widget-header__btn btn__close" onClick={props.onCloseWidget}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" widget="20px" height="20px">
           <path
             fill="#f0f0f6"

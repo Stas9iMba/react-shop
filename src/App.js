@@ -1,27 +1,37 @@
+import React from 'react';
+
 import search from './images/icons/search.svg';
 import Card from './components/Card';
 import Header from './components/Header';
 import SideBasket from './components/SideBasket';
 import Widget from './components/Widget';
-import product_1 from './images/product/product-1.jpg';
-import product_2 from './images/product/product-2.jpg';
-import product_3 from './images/product/product-3.jpg';
-import product_4 from './images/product/product-4.jpg';
-
-const arr = [
-  { title: 'Мужские Кроссовки Nike Blazer Mid Suede', price: 12990, imgUrl: product_1 },
-  { title: 'Мужские Кроссовки Nike Blazer Mid Suede', price: 15490, imgUrl: product_2 },
-  { title: 'Мужские Кроссовки Nike Blazer Mid Suede', price: 9990, imgUrl: product_3 },
-  { title: 'Мужские Кроссовки Nike Blazer Mid Suede', price: 11590, imgUrl: product_4 },
-];
 
 function App() {
+  const [items, setItems] = React.useState([]);
+  const [cartItems, setCartItems] = React.useState([]);
+  const [cartOpened, setCartOpened] = React.useState(false);
+  const [widgetOpened, setWidgetOpened] = React.useState(true);
+
+  const onAddToCart = (cart) => setCartItems((prev) => [...prev, cart]);
+  console.log(cartItems[0]);
+  React.useEffect(() => {
+    fetch("https://60ed9e7ca78dc700178ae024.mockapi.io/items")
+      .then((res) => {
+        console.log(res)
+        return res.json();
+      })
+      .then((json) => {
+        console.log(json)
+        setItems(json);
+      });
+  }, []);
+
   return (
     <div className="wrapper">
-      <SideBasket />
-      <div className="container" >
-        <Header />
-        <div className="content" >
+      {cartOpened && <SideBasket onClose={() => setCartOpened(false)} items={cartItems} />}
+      <div className="container">
+        <Header onClickCart={() => setCartOpened(true)} />
+        <div className="content">
           <div className="content__top">
             <h1 className="content__title">Все кросcовки</h1>
             <form className="content__form" action="#">
@@ -30,23 +40,23 @@ function App() {
             </form>
           </div>
           <div className="content__inner">
-            {arr.map((obj) => (
+            {items.map((item) => (
               <Card
-                title={obj.title}
-                price={obj.price}
-                imgUrl={obj.imgUrl}
+                title={item.title}
+                price={item.price}
+                imgUrl={item.imgUrl}
                 onClickFavorite={() => {
                   console.log('Добавили в избранное');
                 }}
                 onClickAdd={() => {
-                  console.log('Добавили в корзину');
+                  onAddToCart(item);
                 }}
               />
             ))}
           </div>
         </div>
       </div>
-      <Widget />
+      {widgetOpened && <Widget onCloseWidget={() => setWidgetOpened(false)} />}
     </div>
   );
 }
