@@ -4,6 +4,7 @@ import btnRemove from '../images/icons/button-remove.svg';
 function SideBasketItem({ title, price, imgUrl }) {
   const [cart, setCartRemove] = React.useState('flex');
   const onRemove = () => {
+    
     setCartRemove('none');
   };
   return (

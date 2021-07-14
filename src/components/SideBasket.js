@@ -19,14 +19,14 @@ function SideBasket({ onClose, items = [] }) {
           />
         </div>
         <div className="side-basket__items">
-          {items.map((obj) => (
-            <SideBasketItem 
-            title={obj.title} 
-            price={obj.price} 
-            imgUrl={obj.imgUrl} 
+          {items.map((obj, index) => (
+            <SideBasketItem
+              key={index + obj.title}
+              title={obj.title}
+              price={obj.price}
+              imgUrl={obj.imgUrl}
             />
-            
-            ))}
+          ))}
         </div>
         <ul className="side-basket__list list-info">
           <li>
