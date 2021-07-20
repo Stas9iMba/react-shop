@@ -11,20 +11,34 @@ import axios from 'axios';
 function App() {
   const [items, setItems] = React.useState([]);
   const [cartItems, setCartItems] = React.useState([]);
+  const [favorites, setFavorites] = React.useState([]);
   const [cartOpened, setCartOpened] = React.useState(false);
   const [searchValue, setSearchvalue] = React.useState('');
   const [widgetOpened, setWidgetOpened] = React.useState(true);
-
+  console.log(cartItems)
 
   React.useEffect(() => {
     axios.get('https://60ed9e7ca78dc700178ae024.mockapi.io/items').then((res) => {
-      setItems(res.data)
-    })
+      setItems(res.data);
+    });
+    axios.get('https://60ed9e7ca78dc700178ae024.mockapi.io/cart').then((res) => {
+      setCartItems(res.data);
+    });
   }, []);
 
   const onAddToCart = (cart) => {
-    axios.post('https://60ed9e7ca78dc700178ae024.mockapi.io/cart',  cart);
+    axios.post('https://60ed9e7ca78dc700178ae024.mockapi.io/cart', cart);
     setCartItems((prev) => [...prev, cart]);
+  };
+
+  const onAddFavorite = (obj) => {
+    axios.post('https://60ed9e7ca78dc700178ae024.mockapi.io/favorite', obj);
+    setFavorites((prev) => [...prev, obj]);
+  };
+
+  const onRevoveToCart = (id) => {
+    axios.delete(`https://60ed9e7ca78dc700178ae024.mockapi.io/cart/${id}`);
+    setCartItems((prev) => prev.filter(item => item.id !== id));
   };
 
   const onChangeSearchInput = (event) => {
@@ -33,10 +47,16 @@ function App() {
 
   return (
     <div className="wrapper">
-      {cartOpened && <SideBasket onClose={() => setCartOpened(false)} items={cartItems} />}
-      <div className="container" >
+      {cartOpened && (
+        <SideBasket
+          onClose={() => setCartOpened(false)}
+          items={cartItems}
+          onRemove={onRevoveToCart}
+        />
+      )}
+      <div className="container">
         <Header onClickCart={() => setCartOpened(true)} />
-        <div className="content" >
+        <div className="content">
           <div className="content__top">
             <h1 className="content__title">
               {searchValue ? `Поиск по запросу: ${searchValue}` : `Все кроссовки`}
@@ -45,9 +65,10 @@ function App() {
               <img className="search" width={20} height={20} src={search} alt="search" />
               <input
                 type="text"
-                placeholder="Поиск..."
+                placeholder="&nbsp;"
                 onChange={onChangeSearchInput}
                 value={searchValue}
+                required
               />
               {searchValue && (
                 <img
@@ -70,11 +91,9 @@ function App() {
                   title={item.title}
                   price={item.price}
                   imgUrl={item.imgUrl}
-                  onClickFavorite={() => {
-                    console.log('Добавили в избранное');
-                  }}
+                  onClickFavorite={(obj) => onAddFavorite(obj)}
                   onClickAdd={() => {
-                    onAddToCart(item);
+                    onAddToCart();
                   }}
                 />
               ))}
